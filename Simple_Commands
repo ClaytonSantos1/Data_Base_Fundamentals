@@ -1,0 +1,30 @@
+-- Remove a tabela
+DROP TABLE Modelo;
+-- Cria a tabela
+CREATE TABLE Modelo (
+  	id_modelo NUMBER,
+	nome VARCHAR2(50),
+    num_lugares NUMBER,
+    autonomia NUMBER,
+    PRIMARY KEY (id_modelo)
+);
+
+-- Remove a tabela
+DROP TABLE Aviao;
+-- Cria a tabela
+CREATE TABLE Aviao (
+  	matricula VARCHAR2(20),
+    id_modelo NUMBER,
+    PRIMARY KEY (matricula),
+    CONSTRAINT fk_modelo_id_modelo FOREIGN KEY (id_modelo) REFERENCES Modelo (id_modelo)
+);
+
+-- Altera uma tabela
+ALTER TABLE Aviao
+	ADD data_fabricacao DATE;
+
+-- Inserindo Dados
+INSERT INTO Modelo VALUES (1, 'Boing 747', 400, 8000);
+INSERT INTO Modelo VALUES (2, 'Airbus A320', 150, 3500);
+
+SELECT * FROM modelo;
